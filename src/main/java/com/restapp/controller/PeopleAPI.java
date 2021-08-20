@@ -38,6 +38,8 @@ public class PeopleAPI implements PeopleAPISpecification {
 @Autowired
 	  PeopleService people;
 
+
+
 @GetMapping("/people")
    public List<Person> getPeople(){
 	   return people.getPeople();

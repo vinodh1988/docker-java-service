@@ -36,18 +36,20 @@ public class PeopleService {
    }
    
    public List<Person> getPeople2(){
-	   
+	   System.out.println(people);
+	   System.out.println("Flow working...");
 	   return people.findAll();
    }
    
-   public void addPeople(Person p) throws RecordAlreadyExists{
+   public Boolean addPeople(Person p) throws RecordAlreadyExists{
 	
 	  Person result = people.findBySno(p.getSno());
 	  if(result!=null)
 		   throw new RecordAlreadyExists();
 	  else
 	  {
-		  people.save(p); // Save method updates the record if it sno already exists
+		  people.save(p);
+		  return true;// Save method updates the record if it sno already exists
 	  }
    }
    
