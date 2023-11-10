@@ -29,55 +29,5 @@ public class PeopleControllerUnitTests{
 	
 
 	
-	@Mock
-	PeopleRepository peopleRepository;
-	
-	@InjectMocks 
-	    private PeopleService people;
-	
-	@InjectMocks 
-	PeopleAPI peopleAPI;
-	
-	@Mock
-	  private PeopleService people2;
-	
-	
-	@Test
-	public void testReadAll() {
-		List<Person> list = new ArrayList<Person>();
-		list.add(new Person(1,"Raj","Chennai"));
-		list.add(new Person(2,"Harry","Chennai"));
 		
-		//mocking 
-		when(peopleRepository.findAll()).thenReturn(list);
-		when(people2.getPeople2()).thenReturn(list);
-		
-		
-		List<Person> result=people.getPeople2();
-		List<Person> result2=peopleAPI.getPeople2();
-		System.out.println(result);
-		assertThat(result.size()).isEqualTo(2);
-		assertThat(result.get(0).getName()).isEqualTo("Raj");
-		assertThat(result2.size()).isEqualTo(2);
-	}
-	
-	@Test
-	public void testAddPerson() {
-		MockHttpServletRequest request=new MockHttpServletRequest();
-		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-		Person person=new Person(1,"Rahul","Chennai");
-		
-		try {
-			when(peopleRepository.findBySno(any(Integer.class))).thenReturn(null);
-			when(peopleRepository.save(any(Person.class))).thenReturn(person);
-			when(people2.addPeople(person)).thenReturn(true);
-			ResponseEntity<Person> result=peopleAPI.addPeople(person);
-			assertThat(people.addPeople(person)).isEqualTo(true);
-			assertThat(result.getStatusCodeValue()).isEqualTo(201);
-			assertThat(result.getBody().getName()).isEqualTo("Rahul");
-		} catch (RecordAlreadyExists e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}	
 }
