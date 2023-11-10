@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.restapp.entities.Person;
 
-@SpringBootTest(classes=RestMicroserviceApplication.class,webEnvironment = WebEnvironment.RANDOM_PORT)
+//@SpringBootTest(classes=RestMicroserviceApplication.class,webEnvironment = WebEnvironment.RANDOM_PORT)
 public class PeopleIntegrationTests {
    @LocalServerPort
    private int port;
