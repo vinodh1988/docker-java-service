@@ -23,7 +23,7 @@ import com.restapp.entities.Person;
 import com.restapp.repositories.PeopleRepository;
 import com.restapp.services.PeopleService;
 
-@ExtendWith(MockitoExtension.class)
+
 public class PeopleControllerUnitTests{
 
 	
